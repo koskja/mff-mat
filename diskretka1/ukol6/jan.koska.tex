@@ -1,0 +1,44 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{uloha}{Úloha}
+\newtheorem{theorem}{Věta}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\proofname}{Důkaz}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\fallingfactorial}[2]{#1^{\underline{#2}}}
+
+\newenvironment{reseni}{\noindent\textbf{Řešení.}\hspace{0.5em}}{\hfill\qed\medskip}
+
+\begin{document}
+\begin{uloha}
+Mějme $n, k \in \N$ splňující $n \geq k \geq 3$. Kolik je kružnic délky $k$ v grafu $K_n$?
+\end{uloha}
+\begin{reseni}
+Kružnice definujeme kombinací volby $k$-tice z $n$ vrcholů a vhodným zvolením $k$ hran mezi nimi.
+Možností volby $k$-tice $C \subseteq V(K_n), |C|=k$ je $n \choose k$. 
+Všimneme si, že každá volba $C$ popisuje více kružnic. Každá z nich vznikne
+z nějaké permutace $C$. Potřebujeme tedy spočítat počet permutací $C$ a vydělit počtem permutací, které popisují stejnou kružnici.
+Počet permutací popisující jednu kružnici je $2k$, protože každé dvě permutace, které jsou navzájem cyklicky posunuté, nebo jsou navzájem v opačném pořadí, popisují stejnou kružnici.
+Celkem tedy máme $\frac{1}{2k}k! = \frac{1}{2} (k-1)!$ kružnic na $k$ vrcholech a 
+$$
+\frac{k!}{2k}\binom{n}{k} =
+\frac{(k-1)!}{2}\binom{n}{k} 
+$$
+kružnic délky $k$ v grafu $K_n$.
+\end{reseni}
+\begin{uloha}
+Dokažte, že pro každý graf, jehož všechny vrcholy mají stupeň alespoň $n$, existuje cesta délky $n$.
+\end{uloha}
+\begin{reseni}
+Postupně dokážeme existenci cesty délky $m$ pro $m=0$ až $m=n$.
+Jelikož graf musí obsahovat nějaké vrcholy, cestu délky 0 máme vždy.
+Předpokládejme, že pro $m \in \{0, \dots, n-1 \}$ existuje cesta $P$ délky $m$.
+Nechť $v\in P, \deg_P(v)=1$ je nějaký vrchol na okraji $P$. 
+Vrchol $v$ má stupeň alespoň $n$, a musí mít alespoň jednu hranu mimo $P$, 
+jelikož $P$ je kratší než $n$. Touto hranou rozšíříme $P$ o jeden vrchol,
+a dostaneme cestu délky $m+1$. Indukcí jsme dokázali, že pro každé $m \in \{0, \dots, n\}$
+existuje cesta délky $m$ a tedy i cesta délky $n$.
+\end{reseni}
+\end{document}

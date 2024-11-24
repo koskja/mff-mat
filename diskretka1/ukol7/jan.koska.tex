@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\newtheorem{uloha}{Úloha}
+\newtheorem{theorem}{Věta}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\proofname}{Důkaz}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\fallingfactorial}[2]{#1^{\underline{#2}}}
+
+\newenvironment{reseni}{\noindent\textbf{Řešení.}\hspace{0.5em}}{\hfill\qed\medskip}
+
+\begin{document}
+\begin{uloha}
+Nechť $T$ je strom s aspoň dvěma vrcholy takový, že pro každou jeho hranu $e$ mají obě komponenty vzniklé odebráním $e$ lichý počet vrcholů. Dokažte, že všechny vrcholy $T$ mají lichý stupeň.
+\end{uloha}
+\begin{reseni}
+Nejprve ukážeme, že každý takový graf má sudý počet vrcholů. Nechť $e$ je libovolná hrana grafu $T$. Označme $T_1$ a $T_2$ komponenty vzniklé odebráním $e$. Jelikož $T_1$ a $T_2$ mají lichý počet vrcholů, má $T$ sudý počet vrcholů.
+
+Nyní pro spor předpokládejme, že existuje vrchol $v$ stupně $2k$ pro nějaké $k \in \N$. 
+Odebráním všech hran incidentních s $v$ získáme $2k$ komponent (mimo $v$), kde každá z nich má lichý počet vrcholů. 
+Celkem máme sudý počet vrcholů v komponentách bez $v$ a celkový počet vrcholů by byl lichý, což je spor.
+
+\end{reseni}
+\begin{uloha}
+Kolik koster má úplný bipartitní graf $K_{2,n}$?
+\end{uloha}
+\begin{reseni}
+Označme vrcholy levé partity $\{a, b\}$ a pravé $\{1, 2, \dots, n\}$. Každá kostra musí obsahovat
+vrcholy $a$ a $b$. 
+
+Ukážeme, že $a, b$ jsou propojeny přes jeden prvek v pravé partitě.
+Vrcholy $a$ a $b$ nemohou být propojeny přímo, jelikož leží v jedné partitě.
+Označme $A$ všechny vrcholy sousedící s $a$ a $B$ všechny vrcholy sousedící s $b$.
+Jelikož $A, B$ jsou v pravé partitě, nemůže mezi nimi být hrana. Jelikož kostra je souvislý graf, musí existovat
+nějaký vrchol $v \in B$, který má hranu s $a$.
+
+V každé kostře tedy existuje právě jeden vrchol $v$ v pravé partitě, který má hranu s $a$ i $b$.
+Každý ze zbylých $n-1$ vrcholů v pravé partitě může být spojen s $a$ nebo $b$.
+$v$ lze zvolit $n$ způsoby a pro každý zbylý vrchol máme $2$ možnosti.
+Celkem tedy existuje $n\cdot2^{n-1}$ koster.
+
+\end{reseni}
+\end{document}

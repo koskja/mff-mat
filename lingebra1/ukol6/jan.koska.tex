@@ -1,0 +1,207 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\theoremstyle{definition}
+\newtheorem{uloha}{Úloha}
+\theoremstyle{plain}
+\newtheorem{theorem}{Věta}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\proofname}{Důkaz}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\fallingfactorial}[2]{#1^{\underline{#2}}}
+\newcommand{\vker}{\text{Ker\hspace{0.1em}}}
+\newcommand{\vim}{\text{Im\hspace{0.1em}}}
+\newcommand{\LO}{\text{LO\hspace{0.1em}}}
+
+\newenvironment{reseni}{\noindent\textbf{Řešení.}\hspace{0.5em}}{\hfill\qed\medskip}
+
+\begin{document}
+\begin{uloha}
+Uvažujme množinu $V$ všech reálných čtvercových matic řádu 3, které zároveň splňují podmínky:
+\begin{itemize}
+    \item první a poslední řádek matice je stejný a
+    \item součet všech prvků matice je nulový.
+\end{itemize}
+Dokažte, že $V$ (s operacemi sčítání matic a násobení matice reálným číslem) je podprostorem prostoru $\mathbb{R}^{3 \times 3}$ a najděte nějakou pětiprvkovou množinu generátorů tohoto podprostoru.
+\end{uloha}
+\begin{reseni}
+Řekněme, že obecná matice $A \in \R^{3\times 3}$ má tvar
+\[
+A = \begin{pmatrix}
+a & b & c \\
+d & e & f \\
+g & h & i
+\end{pmatrix}
+\]
+Pokud má platit $A \in V$, musí platit $a = g$, $b = h$ a $c = i$ a $a + b + c + d + e + f + g + h + i = 0$. Do druhé rovnice dosadíme a vyjádříme $f$:
+\[
+f = -(a + b + c + d + e + g + h + i) = -(a + b + c + d + e + a + b + c) = -2(a + b + c) - d - e
+\]
+. Každá matice $A \in V$ má tedy tvar
+\[
+A = \begin{pmatrix}
+a & b & c \\
+d & e & -2(a + b + c) - d - e \\
+a & b & c
+\end{pmatrix}
+\]
+pro nějakou pětici $(a, b, c, d, e)^T \in \R^5$.
+
+Nyní ukážeme, že $V$ je uzavřená pod lineárními kombinacemi:
+
+Nechť $A_1, A_2 \in V$ a $\lambda_1, \lambda_2 \in \R$. Chceme dokázat, že $\lambda_1 A_1 + \lambda_2 A_2 \in V$.
+Ze sčítání matic plyne: 
+\[
+\lambda_1 A_1 + \lambda_2 A_2 = \begin{pmatrix}
+\lambda_1 a_1 & \lambda_1 b_1 & \lambda_1 c_1 \\
+\lambda_1 d_1 & \lambda_1 e_1 & \lambda_1 (-2(a_1 + b_1 + c_1) - d_1 - e_1) \\
+\lambda_1 a_1 & \lambda_1 b_1 & \lambda_1 c_1
+\end{pmatrix} + \] \[ + \begin{pmatrix}
+\lambda_2 a_2 & \lambda_2 b_2 & \lambda_2 c_2 \\
+\lambda_2 d_2 & \lambda_2 e_2 & \lambda_2 (-2(a_2 + b_2 + c_2) - d_2 - e_2) \\
+\lambda_2 a_2 & \lambda_2 b_2 & \lambda_2 c_2
+\end{pmatrix}
+= \] \[ = \begin{pmatrix}
+\lambda_1 a_1 + \lambda_2 a_2 & \lambda_1 b_1 + \lambda_2 b_2 & \lambda_1 c_1 + \lambda_2 c_2 \\
+\lambda_1 d_1 + \lambda_2 d_2 & \lambda_1 e_1 + \lambda_2 e_2 & \begin{array}{c} \lambda_1 (-2(a_1 + b_1 + c_1) - d_1 - e_1) \\ + \lambda_2 (-2(a_2 + b_2 + c_2) - d_2 - e_2) \end{array} \\
+\lambda_1 a_1 + \lambda_2 a_2 & \lambda_1 b_1 + \lambda_2 b_2 & \lambda_1 c_1 + \lambda_2 c_2
+\end{pmatrix}
+= \] \[ = \begin{pmatrix}
+\lambda_1 a_1 + \lambda_2 a_2 & \lambda_1 b_1 + \lambda_2 b_2 & \lambda_1 c_1 + \lambda_2 c_2 \\
+\begin{array}{c} \lambda_1 d_1 + \lambda_2 d_2 \end{array} & \begin{array}{c} \lambda_1 e_1 + \lambda_2 e_2 \end{array} & \begin{array}{c} -2((\lambda_1 a_1 + \lambda_2 a_2) + (\lambda_1 b_1 + \lambda_2 b_2) \\ + (\lambda_1 c_1 + \lambda_2 c_2)) \\ - (\lambda_1 d_1 + \lambda_2 d_2) - (\lambda_1 e_1 + \lambda_2 e_2) \end{array} \\
+\lambda_1 a_1 + \lambda_2 a_2 & \lambda_1 b_1 + \lambda_2 b_2 & \lambda_1 c_1 + \lambda_2 c_2
+\end{pmatrix}
+\]
+Vidíme (po substituci $a = \lambda_1 a_1 + \lambda_2 a_2$, $b = \lambda_1 b_1 + \lambda_2 b_2$, $c = \lambda_1 c_1 + \lambda_2 c_2$, $d = \lambda_1 d_1 + \lambda_2 d_2$, $e = \lambda_1 e_1 + \lambda_2 e_2$) že $\lambda_1 A_1 + \lambda_2 A_2 \in V$.
+
+Dále vidíme, že volbou $\lambda_1 = \lambda_2 = 1$ dostáváme $A_1 + A_2 \in V$ a volbou $\lambda_2 = 0$ dostáváme $\forall \lambda_1 \in \R: \lambda_1 A_1 \in V$.
+Jelikož $V$ je neprázdná množina (matice $0$ zřejmě leží v $V$), $V$ je podprostorem $\R^{3 \times 3}$.
+
+Nyní nalezneme pětiprvkovou množinu generátorů $V$. K té nám poslouží postupná volba
+$(a_i, b_i, c_i, d_i, e_i) = e_i, i \in \{1, 2, 3, 4, 5\}$ a následné dosazení do vzorce pro $A$.
+Získáme tak pět matic
+\[
+\begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & -2 \\
+1 & 0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & -2 \\
+0 & 1 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 & 1 \\
+0 & 0 & -2 \\
+0 & 0 & 1
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 & 0 \\
+1 & 0 & -1 \\
+0 & 0 & 0
+\end{pmatrix},
+\begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & -1 \\
+0 & 0 & 0
+\end{pmatrix}
+\]
+.
+
+Nyní ukážeme, že těchto pět matic skutečně generuje podprostor $V$. Nechť $A \in V$. Pak existují reálná čísla $a, b, c, d, e$ taková, že
+\[
+A = \begin{pmatrix}
+a & b & c \\
+d & e & -2(a + b + c) - d - e \\
+a & b & c
+\end{pmatrix}
+\]
+Můžeme tedy $A$ vyjádřit jako lineární kombinaci pěti matic:
+\[
+A = a \begin{pmatrix}
+1 & 0 & 0 \\
+0 & 0 & -2 \\
+1 & 0 & 0
+\end{pmatrix} + b \begin{pmatrix}
+0 & 1 & 0 \\
+0 & 0 & -2 \\
+0 & 1 & 0
+\end{pmatrix} + c \begin{pmatrix}
+0 & 0 & 1 \\
+0 & 0 & -2 \\
+0 & 0 & 1
+\end{pmatrix} + d \begin{pmatrix}
+0 & 0 & 0 \\
+1 & 0 & -1 \\
+0 & 0 & 0
+\end{pmatrix} + e \begin{pmatrix}
+0 & 0 & 0 \\
+0 & 1 & -1 \\
+0 & 0 & 0
+\end{pmatrix}
+\]
+Tím jsme ukázali, že každá matice $A \in V$ je lineární kombinací pěti uvedených matic, což znamená, že tyto matice generují podprostor $V$.
+\end{reseni}
+\newpage
+\begin{uloha}
+Najděte matici $A$ nad tělesem $\mathbb{Z}_3$ s co nejmenším počtem řádků tak, aby $\text{Ker } A = \text{Im } B$, kde $B$ je následující matice nad $\mathbb{Z}_3$.
+
+\[
+B = \begin{pmatrix}
+0 & 0 & 0 \\
+2 & 1 & 1 \\
+0 & 1 & 2 \\
+1 & 1 & 0 \\
+1 & 0 & 1
+\end{pmatrix}
+\]
+\end{uloha}
+\begin{reseni}
+Nejprve určíme $\vim B$. To je lineární obal sloupců matice $B$.
+\[
+\vim B = \LO \left\{ \begin{pmatrix} 0 \\ 2 \\ 0 \\ 1 \\ 1 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 2 \\ 0 \\ 1 \end{pmatrix} \right\} = \LO \left\{ \begin{pmatrix} 0 \\ 1 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 2 \\ 0 \\ 1 \end{pmatrix} \right\}
+\], jelikož $(0,1,2,0,1)^T + (0,1,1,1,0)^T = (0,2,0,1,1)^T$. Zbylé dva vektory jsou zřejmě lineárně nezávislé, neboť žádný není násobkem druhého.
+
+Nyní se zamyslíme nad tím, jaké matice $A$ mají $\vker A = \vim B$. 
+Snadno přístupná myšlenka je použít matici s nulovým řádkem; ta však má za jádro celý prostor $\Z_3^5$.
+Chtěli bychom tedy najít matici s menším jádrem. 
+
+Nejprve určíme minimální velikost jádra $A$ - podíváme se, jaké jsou podmínky pro to, aby $\vim B \subseteq \vker A$. 
+
+Ekvivalentní formulace je $AB = 0$, kterou lze získat z
+$\forall w \in \vim B: w \in \vker A \Leftrightarrow \forall w \in \vim B: A w = 0 \Leftrightarrow \forall v \in \Z_3^3: A B v = 0 \Leftrightarrow AB = 0$. Pokud označíme $n$ počet řádků matice $A$, 
+získáme užitečnou podmínku $\forall i \in \{1, 2, \dots, n\}, j \in \{1, 2, \dots, 3\}: \sum_{k=1}^n a_{ik} b_{kj} = 0$. Řečeno slovy, 
+součin každého řádku matice $A$ a každého sloupce matice $B$ je roven nule.
+Pro každý řádek matice $A$ je tedy potřeba kolmost (v tom smyslu že $\varphi \in \Z_3^{1\times 5}, w \in \Z_3^{5\times1}$ jsou kolmé, pokud $\varphi w = 0$) k generátorům $\vim B$.
+Dostaneme soustavu lineárních rovnic
+\[
+\begin{pmatrix}
+0 & 1 & 1 & 1 & 0 & \vline & 0 \\
+0 & 1 & 2 & 0 & 1 & \vline & 0
+\end{pmatrix}
+\],
+jejíž řešením je prostor $K = \LO \left\{ \begin{pmatrix} 1 \\ 0 \\ 0 \\ 0 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 1 \\ 1 \\ 0 \end{pmatrix}, \begin{pmatrix} 0 \\ 1 \\ 2 \\ 0 \\ 1 \end{pmatrix} \right\}$.
+Řádky matice $A$ tedy jsou (nějaké) transponované prvky $K$. Jelikož řádky $A$ jsou voleny z 3 rozměrného prostoru, $\text{rank\hspace{0.1em}} A \le 3$.
+Zde lze poznamenat, že hledáním minimální velikosti jádra jsme zároveň určili maximální počet řádků matice $A$.
+
+Nyní se podíváme na minimální počet řádků. Jelikož dokážeme zařídit, aby $\vim B \subseteq \vker A$, 
+stačí, aby $\dim \vker A \le \dim \vim B = 2$.
+Jádro matice $A$ jsou všechny vektory $w \in \Z_3^5: A w = 0$. 
+$\vker A$ je generované $p$ vektory, kde $p$ je počet volných proměnných soustavy rovnic $A w = 0$.
+Těch je právě $5 - \text{rank\hspace{0.1em}} A$. Dostaneme tak
+$$ 5 - \text{rank\hspace{0.1em}} A \le 2 \Leftrightarrow \text{rank\hspace{0.1em}} A \ge 3 $$
+. Matice $A$ tedy musí mít alespoň 3 řádky. Přirozenou volbou jsou generátory $K$, které nám dají
+\[
+A=\begin{pmatrix}
+1 & 0 & 0 & 0 & 0 \\
+0 & 1 & 1 & 1 & 0 \\
+0 & 1 & 2 & 0 & 1
+\end{pmatrix}.
+\]
+
+\end{reseni}
+
+\end{document}

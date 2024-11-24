@@ -1,0 +1,39 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\theoremstyle{definition}
+\newtheorem{uloha}{Úloha}
+\theoremstyle{plain}
+\newtheorem{theorem}{Věta}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\proofname}{Důkaz}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\fallingfactorial}[2]{#1^{\underline{#2}}}
+
+\newenvironment{reseni}{\noindent\textbf{Řešení.}\hspace{0.5em}}{\hfill\qed\medskip}
+
+\begin{document}
+\begin{uloha}
+Určete počet posloupností $(v_1, v_2, v_3)$ v prostoru $\mathbb{Z}_3^3$, které jsou lineárně nezávislé.
+\end{uloha}
+\begin{reseni}
+Bonusová úloha je srovnatelně těžká, takže ji vyřešíme a použijeme výsledek.
+\begin{lemma}
+Nechť $p, k, l \in \N$ a $p$ je prvočíslo. Pak v prostoru $\mathbb{Z}_p^k$ existuje $\prod_{i=0}^{l} (p^k-p^i)$ lineárně nezávislých posloupností $(v_1, \hdots, v_l)$
+\end{lemma}
+\begin{proof}
+Použijeme indukci na $l$. Pro $l = 1$ je tvrzení zřejmé - v prostoru $\mathbb{Z}_p^k$ existuje $p^k$ posloupností $(v_1)$ a mezi nimi je právě $p^k-1$ lineárně nezávislých (posloupnost $(0)$ není lineárně nezávislá).
+Nyní předpokládejme, že tvrzení platí pro $l-1$. Podíváme se na tvar posloupnosti $(v_1, \hdots, v_l)$. Podposloupnost $(v_1, \hdots, v_{l-1})$ je lineárně nezávislá
+a $v_l \notin \text{LO } (v_1, \hdots, v_{l-1})$.
+\end{proof}
+\end{reseni}
+\begin{uloha}
+Předpokládejme, že ve vektorovém prostoru $V$ nad tělesem $\R$ je $(u, v, w, z)$ lineárně nezávislá
+posloupnost. Rozhodněte, zda je posloupnost $(4u + 3v + 2w + z, u + 2v + 3w + 4z, u - v + z)$ také
+lineárně nezávislá ve $V$.
+\end{uloha}
+\begin{reseni}
+\end{reseni}
+
+\end{document}
