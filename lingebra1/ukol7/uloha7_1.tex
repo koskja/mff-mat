@@ -1,0 +1,41 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\begin{document}
+Pozorovanie: Počet prvkov množiny $\mathbb{Z}_p^k$ je vlatne počet $k$-prvkových vektorov kde každý prvok patrí do telesa $\mathbb{Z}_p$ a teda môže nadobúdať $p$ hodnôt. Z toho vyplýva $|\mathbb{Z}_p^k| =  p^k$\\
+
+\begin{lemma}
+Lemma: Nech \textbf{V} je aritmetický vektorový priestor nad konečným telesom \textbf{T} potom pre lineárne nezávislú postupnosť $(v_1,v_2,\dots,v_n)|\ n\in \mathbb{N},v_i\in $\textbf{V},$i\in \{1,\dots,n\},$ platí $|LO\{v_1,v_2,\dots,v_n\}| = |T|^n$ \\
+
+Dôkaz: Počet prvkov $LO\{v_1,v_2,\dots,v_n\}$ je počet lineárnych kombinácií vektorov. Najskôr si dokážme,že každá lineárna kombinácia je určená jednoznačne skalármi $t_1,\dots,t_n\in T$ ktoré násobia vektory $v_1,v_2,\dots,v_n$. Dokážeme to sporom : čiže uvažujme že existuje vektor $a=LK\{v_1,v_2,\dots,v_n\}$ ktorý možno vyjadriť aspoň dvoma spôsobmi  teda $a = t_1v_1+\dots + t_nv_n $ a zároveň $a = t_1'v_1+\dots + t_n'v_n $ $\exists\ i\in\{1,\dots,n\}|\ t_i\neq t_i' $. Odčítaním dostaneme,že 
+\begin{equation*}
+    (t_1-t_1')v_1+\dots+(t_i-t_i')v_i+(t_n-t_n')v_n = 0
+\end{equation*}
+avšak $t_i-t_i'\neq 0$ čo je spor s lineárnou nezávislosťou.
+Takže každá $LK\{v_1,v_2,\dots,v_n\}$ je určená $n$ prvkami telesa $T$. 
+Každý prvok môže nadobudať $|T| $ hodnôt teda $|LO\{v_1,v_2,\dots,v_n\}| = |T|^n$\\
+
+Riešme bonusovú úlohu, riešnie prvej úlohy dostaneme konkrétnym dosadením. Teda máme dané $p, k, l$ určete počet posloupností $(v_1, ..., v_l)$ v prostoru $\mathbb{Z}_p^k$ jsou lineárně nezávislé. Vieme $dim(\mathbb{Z}_p^k) = k$ z počtu vektorov kanonickej báze. Teda počet lineárne nezávislých vektorov bude najviac $k$, čiže $l\leq k$.
+Použijeme obmenenú definíciu lineárnej nezávislosti podľa ktorej: postupnosť vektorov je lineárne nezávislá ak žiaden z vektorov nie je lineárnou kombináciu predchádzajúcich vektorov. Čiže pre postupnosť vektorov $(v_1,v_2,\dots,v_l)$ platí $v_i\notin LO\{v_1,\dots,v_{i-1}\}$. Teraz už máme všetko čo potrebujeme a môžeme to dať dokopy.\\
+
+Takže vieme,že $v_1\in \mathbb{Z}_p^k\setminus LO\{\emptyset\}$  a všeobecne pre itý prvok postupnosti $v_i\in\mathbb{Z}_p^k\setminus LO\{v_1,\dots,v_{i-1}\}$. teda počet možností vypočitame ako súčin počtov prvkov ktoré môžu nadobúdať vektory $v_i$. Označme $P$ počet lineárne nezávislých postupností $(v_1, ..., v_l)$.  
+\begin{equation}
+    P=\prod_{i=1}^{l}{|\mathbb{Z}_p^k\setminus LO\{v_1,\dots,v_{i-1}\}|} =\prod_{i=1}^{l}{(|\mathbb{Z}_p^k|-|LO\{v_1,\dots,v_{i-1}\}|)}
+\end{equation}
+Použitím pozorovania a lemmatu dostaneme pre $l,k\in \mathbb{N};l\leq k$ :
+\begin{equation}
+    P = \prod_{i=1}^{l}(p^k-p^{i-1})
+\end{equation}
+
+pre $l>k$ $P=0$
+ 
+
+
+Dosadením $p=3,k=3,l=3$ dostaneme že počet lineárne nezávislých postupností bude $26\cdot 24\cdot18= 11\ 232
+$
+
+
+
+\end{document}
