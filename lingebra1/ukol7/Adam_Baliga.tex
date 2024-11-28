@@ -1,0 +1,50 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsfonts}
+\usepackage{amsmath}
+
+\begin{document}
+
+Ak je postupnosť vektorov $(4u + 3v + 2w + z, u + 2v + 3w + 4z, u - v + z)$ nezávislá potom má rovnica 
+\begin{equation*}
+    x_1(4u + 3v + 2w + z)+x_2( u + 2v + 3w + 4z)+x_3( u - v + z) =o
+\end{equation*}
+iba trviálne riešenie $x_1=x_2=x_3=0$ keďže postupnosť $(u,v,w,z)$ je lineárne nezávislá a teda žiaden vektor sa nedá vyjadriť ako lineárna kombinácia zvyšných musí platiť:
+\begin{align}
+    4x_1u +x_2u+x_3u=o\nonumber\\
+    3x_1v +2x_2v-x_3v=o\nonumber\\
+    2x_1w +3x_2w=o\nonumber\\
+    x_1z+4x_2z+x_3z =o\nonumber
+\end{align}
+vektory $u,v,w,z$ môžeme vyňať zároveň vieže že žiaden z týchto  vektorov nie je nulový pretože sú lineárne nezávislé. Dostaneme sústavu rovníc pre parametre $x_1,x_2,x_3$ ktorú si zapíšeme ako maticu a prevedieme do odstupňovaného tvaru.
+\begin{align}\nonumber
+    \begin{pmatrix}
+        4 & 1 & 1\\
+        3 & 2 & -1\\
+        2& 3 & 0\\
+        1& 4 & 1
+    \end{pmatrix}
+    \sim 
+        \begin{pmatrix}
+        1& 4 & 1\\
+        0 & -15 & -3\\
+        0 & -10 & -4\\
+        0& -5& -2 
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+        1& 4 & 1\\
+        0 & 5 & 2\\
+        0 & 0 & 0\\
+        0& 0& 3 
+    \end{pmatrix}
+    \sim
+    \begin{pmatrix}
+        1& 4 & 1\\
+        0 & 5 & 2\\
+      0& 0& 3 \\
+        0 & 0 & 0
+    \end{pmatrix}
+\end{align}
+Vidíme, že všetky stĺpce sú bázové a teda jediné riešenie sústavy bude $x_1=x_2=x_3=0$ teda postupnosť je lineárne nezávislá.
+\end{document}
