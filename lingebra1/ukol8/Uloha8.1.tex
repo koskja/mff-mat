@@ -1,0 +1,28 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\theoremstyle{definition}
+\theoremstyle{plain}
+\newtheorem{theorem}{Veta}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\proofname}{Dôkaz}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\fallingfactorial}[2]{#1^{\underline{#2}}}
+\newcommand{\vker}{\text{Ker\hspace{0.1em}}}
+\newcommand{\vim}{\text{Im\hspace{0.1em}}}
+\newcommand{\LO}{\text{LO\hspace{0.1em}}}
+\newcommand{\LK}{\text{LK\hspace{0.1em}}}
+
+\newenvironment{solution}{\noindent\textbf{Riešenie.}\hspace{0.5em}}{\hfill\qed\medskip}
+
+\begin{document}
+\begin{solution}
+Pre ľubovoľný prvok $f\in W$ platí,že je prvok $V$ a teda ho možno zapísať ako $f(x) = ax^3+bx^2+cx+d$ pre $a,b,c,d\in\R$ zároveň $f(2)=0$ a z toho dostneme rovnicu $8a+4b+2c+d=0$ čiže 
+$f(x)=ax^3+bx^2+cx -8a-4b-2c$ zoskupením členov dostaneme $f(x)=a(x^3-8)+b(x^2-4)+c(x-2)$. Z toho vyplýva, že množina $\{x^3-8,x^2-4,x-2\}$ generuje prostor $W$ a zároveň posloupnost $(x^3-8,x^2-4,x-2)$ je lineárne nezávislá keďže každý člen posloupnosti polynóm rôzneho stupňa Takže môžeme povedať,že táto posloupnost je bázou $W$
+\end{solution}
+
+
+\end{document}
+
