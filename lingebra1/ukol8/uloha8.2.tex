@@ -1,0 +1,112 @@
+\documentclass{article}
+\usepackage{amsmath,amssymb,amsthm}
+
+\theoremstyle{definition}
+\theoremstyle{plain}
+\newtheorem{theorem}{Veta}
+\newtheorem{lemma}{Lemma}
+\renewcommand{\proofname}{Dôkaz}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\fallingfactorial}[2]{#1^{\underline{#2}}}
+\newcommand{\vker}{\text{Ker\hspace{0.1em}}}
+\newcommand{\vim}{\text{Im\hspace{0.1em}}}
+\newcommand{\LO}{\text{LO\hspace{0.1em}}}
+\newcommand{\dim}{\text{dim\hspace{0.1em}}}
+
+\newenvironment{solution}{\noindent\textbf{Riešenie.}\hspace{0.5em}}{\hfill\qed\medskip}
+
+\begin{document}
+\begin{solution}
+Označme $V \leq\R^\omega$ pozostávajúci z postupností splňujúcich rovnicu $a_n =a_{n-1}+a_{n-2}-a_{n-3}$.Všimnime si, že každá postupnosť patriaca do $V$ je jednoznače určená prvými troma členmi. Označme "Kanonická báze" postupnost postupností splňujúce predchadzajúci vzťah tvaru $((1,0,0,...),(0,1,0,...),(0,0,1,...))$ potom táto postupnosť je LN a zároveň generuje $V$ teda je báze, z toho vyplýva,že $\dim V = 3$.\\
+
+Pokiaľ má byť nejaká geometrická posloupnost bázou potom musí spĺňať vzťah ktorý udáva našu postupnosť teda:
+\begin{equation*}
+        q^n = q^{n-1}+q^{n-2}- q^{n-3},\ n\geq 3\\
+\end{equation*}
+a keďže $q\neq0$ inak by to bola nulová poslutpnosť a tá nemôže byť pvkom báze pretože inak by nebola LN. Dostaneme rovnicu a nájdeme jej riešenia:
+\begin{align}
+      q^3-q^2-q+1=0  \\
+      (q+1)(q-1)^2=0
+\end{align}
+takto dostaneme $2$ postupnosti $(1,1,1,\dots),(-1,1,-1,\dots)$ ale my vieme, že "Kanonická báze" má $3$ prvky a teda tieto dve postupnosti nemôžu sami o sebe generovať $V$. Uvažujme teda o aritmetickej postupnosti ktorá je prvkom $V$ a teda platí:
+\begin{equation*}
+    nq = (n-1)q+(n-2)q-(n-3)q,\ n\geq 3
+\end{equation*}
+z čoho dostaneme:
+\begin{align*}
+    n = n-1+n-2-n+3  
+\end{align*}
+Zistili sme že tento vzťah platí pre akúkoľvek aritmetickú postupnosť. Tak si zvoľme postupnosť $q=1 $ teda $(0,1,2,\dots)$\\
+Overme si, že tieto postupnosť týchto troch postupnosti je lineárne nezávislá, keďže každá postupnosť je určená prvými troma členmi pri zisťovaní LN sa stači pozerať len na ne. Zapíšme si ich do matice a preveďme ju do ostupňovaného tvaru:
+\begin{equation*}
+A=
+    \begin{pmatrix}
+        1 & -1 & 0\\
+        1 & 1 & 1\\
+        1 & -1 & 2\\
+
+    \end{pmatrix}
+    \sim 
+    \begin{pmatrix}
+                1 & -1 & 0\\
+        0 & 2 & 1\\
+        0 & 0 & 2\\
+
+    \end{pmatrix}
+\end{equation*}
+Vidíme, že postupnosť je lineárne nezávislá a zároveň hodnosť matice je $3$ a teda generuje priestor $V$. Z toho vyplýva,že postupnosť \\$B =((1,1,1,\dots),(-1,1,-1,\dots),(0,1,2,\dots))$ je bází priestoru $V$.\\
+Nájdime teraz maticu prechodu od "kanonickej báze" do báze $B$. Všimnime si, že postup bude rovnaký ako pri hľadaní inverznej matice k $A$. Chceme previesť maticu tvaru $(A|I_3)$ na $(I_3|X)$ kde $X$ bude naša hľadaná matica prechodu.
+\begin{equation*}
+        \begin{pmatrix}
+        1 & -1 & 0 &|& 1 & 0 &0\\
+        1 & 1 & 1  &|& 0 & 1 &0\\
+        1 & -1 & 2&|& 0 & 0 &1\\
+
+    \end{pmatrix}
+    \sim 
+    \begin{pmatrix}
+        1 & 0 & 0&|& 0.75 & 0.5 &-0.25\\
+        0 & 1 & 0&|& -0.25 &0.5 &-0.25\\
+        0 & 0 & 1&|& -0.5 & 0 &0.5\\
+
+    \end{pmatrix}
+\end{equation*}
+
+Matica prechodu od "kanonickej báze" do našej báze $B$ je:
+\begin{equation*}
+    [\text{id}]_B^K =\begin{pmatrix}
+         0.75 & 0.5 &-0.25\\
+         -0.25 &0.5 &-0.25\\
+         -0.5 & 0 &0.5\\
+    \end{pmatrix}
+\end{equation*}
+Teraz využijeme túto maticu aby sme dostali explicitný vzorec pre postupnosť ktorá sa začína $\{a_n\} =(1,1,2,\dots )$, čiže vyjadrenie v "Kanonickej bázi" bude $(1,1,2)$ . 
+
+\begin{equation*}
+    [\{a_n\}]_B = [\text{id}]_B^K[p]_K = 
+    \begin{pmatrix}
+         0.75 & 0.5 &-0.25\\
+         -0.25 &0.5 &-0.25\\
+         -0.5 & 0 &0.5\\
+    \end{pmatrix}
+    \begin{pmatrix}
+        1\\
+        1\\
+        2
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+        0.75\\
+        -0.25\\
+        0.5
+    \end{pmatrix}
+\end{equation*}
+Takže n-tý člen postupnosti $a_n =0.75 -0.25\cdot (-1)^n + 0.5(n-1) = \frac{1 +(-1)^{n+1}+2n} {4} $ 
+\end{solution}
+
+
+
+\end{document}
+
